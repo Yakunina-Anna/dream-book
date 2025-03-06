@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth Page</title>
+  <style>
+    /* Стили для скрытия форм */
+    .hidden {
+      display: none;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="auth">
+      <div class="auth__inner">
+        <form id="signin-form" class="auth__form">
+          <h1>Вход</h1>
+          <input id="signin-email" type="email" name="email" placeholder="email" required>
+          <input id="signin-password" type="password" name="password" placeholder="password" required>
+          <button type="submit">Войти</button>
+        </form>
+        <div>
+          <button id="show-signin">Войти</button>
+          <button id="show-signup">Регистрация</button>
+        </div>
+
+        <form id="signup-form" class="hidden">
+          <p>Регистрация</p>
+          <input id="signup-email" type="email" name="email" placeholder="email" required>
+          <input id="signup-password" type="password" name="password" placeholder="password" required>
+          <button type="submit">Зарегистрироваться</button>
+        </form>
+
+        <form id="signin-form">
+          <p>Вход</p>
+          <input id="signin-email" type="email" name="email" placeholder="email" required>
+          <input id="signin-password" type="password" name="password" placeholder="password" required>
+          <button type="submit">Войти</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="scripts/index.js"></script>
+  <script type="module" src="scripts/auth/auth.js"></script>
+</body>
+
+</html>
