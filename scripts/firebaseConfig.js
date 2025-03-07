@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,signInWithPopup,  onAuthStateChanged, sendEmailVerification, GoogleAuthProvider  } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 const firebaseConfig = {
   apiKey: "AIzaSyBY-gX5FYGERajiulu2XRFYMc8tZWmXxv0",
   authDomain: "auth-site-2113e.firebaseapp.com",
@@ -14,5 +14,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 
-export { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword};
+export {
+  auth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+  sendEmailVerification,
+  GoogleAuthProvider,
+  signInWithPopup,
+  provider
+};
+

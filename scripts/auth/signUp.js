@@ -1,22 +1,22 @@
-import { auth, createUserWithEmailAndPassword } from "../firebaseConfig.js";
-
+import { auth, createUserWithEmailAndPassword, sendEmailVerification } from "../firebaseConfig.js";
 const signupForm = document.getElementById('signup-form');
 const signupEmailInput = document.getElementById('signup-email');
 const signupPasswordInput = document.getElementById('signup-password');
 
+async function createUser(event, emailValue, passwordValue) {
+  event.preventDefault();
+  const email = emailValue;
+  const password = passwordValue;
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    await sendEmailVerification(auth.currentUser);
+  } catch (error) {
+    alert('Ошибка регистрации');;
+  } finally {
+    signupEmailInput.value = '';
+    signupPasswordInput.value = '';
+  }
+}
 signupForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const email = signupEmailInput.value;
-    const password = signupPasswordInput.value;
-    try {
-        const userCreated = await createUserWithEmailAndPassword(auth, email, password);
-
-        console.log('User created: ',userCreated.user);
-        // Пользователь успешно зарегистрирован
-    } catch (error) {
-        console.error('Error creating user: ', error);
-    } finally {
-        signupEmailInput.value = '';
-        signupPasswordInput.value = '';
-    }
+  createUser(event, signupEmailInput.value, signupPasswordInput.value);
 });

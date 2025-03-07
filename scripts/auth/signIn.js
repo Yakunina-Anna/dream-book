@@ -1,37 +1,60 @@
-import { auth, signInWithEmailAndPassword } from "../firebaseConfig.js";
+import {
+  auth,
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+  provider
+} from "../firebaseConfig.js";
 
 const signinForm = document.getElementById('signin-form');
 const signinEmailInput = document.getElementById('signin-email');
 const signinPasswordInput = document.getElementById('signin-password');
-const rememberMeCheckbox = document.getElementById('remember-checkbox');
-
-signinForm.addEventListener('submit', async (event) => {
+const googleSignInButton = document.getElementById('google-signin-button');
+async function signIn(event, emailValue, passwordValue) {
   event.preventDefault();
-  const email = signinEmailInput.value;
-  const password = signinPasswordInput.value;
-  const isRememberMeChecked = rememberMeCheckbox.checked;
-
+  const email = emailValue;
+  const password = passwordValue;
+  const signinButton = document.getElementById('signin-button-text');
+  const signinLoader = document.getElementById('signin-loader');
   try {
-    // Шаг 1: Ожидаем ответа от Firebase об успешной авторизации
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    console.log('User signed in: ', userCredential.user);
-
-    // Шаг 2: Сохраняем данные в localStorage
-    localStorage.setItem('isAuthenticated', 'true');
-    if (isRememberMeChecked) {
-      localStorage.setItem('isRemembered', 'true'); // Флаг "запомнить меня"
-    } else {
-      localStorage.removeItem('isRemembered');
-    }
-
-    // Шаг 3: Переходим на главную страницу только после завершения всех операций
-    window.location.href = 'index.html';
+    signinButton.classList.add('hidden');
+    signinLoader.classList.remove('opacity-0');
+    await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
-    console.error('Error signing in: ', error);
-    alert('Ошибка входа: ' + error.message); // Показываем ошибку пользователю
+    alert('Ошибка входа');
   } finally {
-    // Очищаем поля формы независимо от результата
+    signinButton.classList.remove('hidden');
+    signinLoader.classList.add('opacity-0');
     signinEmailInput.value = '';
     signinPasswordInput.value = '';
   }
-});
+}
+
+async function signGoogleIn() {
+  const signinGoogleButton = document.getElementById('google-signin-button-text');
+  const signinGoogleLoader = document.getElementById('google-signin-loader');
+  try {
+    signinGoogleButton.classList.add('hidden');
+    signinGoogleLoader.classList.remove('opacity-0');
+    const result = await signInWithPopup(auth, provider);
+    await GoogleAuthProvider.credentialFromResult(result);
+
+  } catch (error) {
+    console.error('Error signing in with Google:', error);
+    alert(`Ошибка входа через Google: ${errorMessage}`);
+  } finally {
+    signinGoogleButton.classList.remove('hidden');
+    signinGoogleLoader.classList.add('opacity-0');
+  }
+}
+
+signinForm.addEventListener('submit', (event) => {
+  signIn(event, signinEmailInput.value, signinPasswordInput.value);
+})
+
+googleSignInButton.addEventListener('click', async (event) => {
+  signGoogleIn()
+})
+
+
+export { signIn };
