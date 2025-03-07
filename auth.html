@@ -20,10 +20,45 @@
       <div class="auth__inner">
         <form id="signin-form" class="auth__form">
           <h1>Вход</h1>
-          <input id="signin-email" type="email" name="email" placeholder="email" required>
-          <input id="signin-password" type="password" name="password" placeholder="password" required>
-          <button type="submit">Войти</button>
+          <div class="auth__input">
+            <label for="signin-email">Email:</label>
+            <input id="signin-email" type="email" name="email" placeholder="email" required>
+          </div>
+          <div class="auth__input">
+            <label for="signin-password">Пароль:</label>
+            <input id="signin-password" type="password" name="password" placeholder="password" required>
+          </div>
+          <div class="auth__input">
+            <button type="submit">Войти</button>
+            <label for="remember-checkbox" class="custom-checkbox">
+              <input id="remember-checkbox" type="checkbox" name="rememberCheckbox" class="hidden-checkbox">
+              <span class="checkbox-style"></span>
+              <span>Запомнить меня</span>
+            </label>
+          </div>
         </form>
+        <form id="signup-form" class="auth__form hidden">
+          <h1>Регистрация</h1>
+          <div class="auth__input">
+            <label for="signup-form-email">Email:</label>
+            <input id="signup-form-email" type="email" name="email" placeholder="email" required>
+          </div>
+          <div class="auth__input">
+            <label for="signup-form-password">Пароль:</label>
+            <input id="signup-form-password" type="password" name="password" placeholder="password" required>
+          </div>
+          <div class="auth__input">
+            <button type="submit">Войти</button>
+            <label for="remember-checkbox" class="custom-checkbox">
+              <input id="remember-checkbox" type="checkbox" name="rememberCheckbox" class="hidden-checkbox">
+              <span class="checkbox-style"></span>
+              <span>Запомнить меня</span>
+            </label>
+          </div>
+        </form>
+        <div  id="auth-info-regist" class="auth__info">
+          <div><span>Нет аккаунта?</span><span>Регистрация</span></div>
+        </div>
         <div>
           <button id="show-signin">Войти</button>
           <button id="show-signup">Регистрация</button>
@@ -36,12 +71,14 @@
           <button type="submit">Зарегистрироваться</button>
         </form>
 
-        <form id="signin-form">
+        <!-- <form id="signin-form">
           <p>Вход</p>
+          <label for="signin-email">Email:</label>
           <input id="signin-email" type="email" name="email" placeholder="email" required>
+          <label for="signin-password">Пароль:</label>
           <input id="signin-password" type="password" name="password" placeholder="password" required>
           <button type="submit">Войти</button>
-        </form>
+        </form> -->
       </div>
     </div>
 

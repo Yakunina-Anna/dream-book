@@ -71,3 +71,62 @@ body {
   border-radius: 12px;
   outline: none;
 }
+
+.auth__input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth__form button {
+  width: 100%;
+  padding: 14px 10px;
+  font-size: 18px;
+  line-height: 27px;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border-radius: 32px;
+  outline: none;
+  cursor: pointer;
+}
+/* Скрываем стандартный чекбокс */
+.hidden, .hidden-checkbox {
+  display: none;
+}
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+/* Стиль для кастомного чекбокса */
+.checkbox-style {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 2px solid black;
+  margin-right: 8px;
+  vertical-align: middle;
+  position: relative;
+}
+
+/* Стиль при выборе чекбокса */
+.hidden-checkbox:checked + .checkbox-style {
+  background-color: black; /* Чёрный цвет при выборе */
+  border-color: black;
+}
+
+/* Добавляем галочку внутри чекбокса */
+.hidden-checkbox:checked + .checkbox-style::after {
+  content: '✔';
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.auth__info {display: block;}
