@@ -10,6 +10,7 @@ async function createUser(event, emailValue, passwordValue) {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
     await sendEmailVerification(auth.currentUser);
+    await signIn(event, email, password);
   } catch (error) {
     alert('Ошибка регистрации');;
   } finally {

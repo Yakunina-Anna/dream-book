@@ -20,6 +20,7 @@ async function signIn(event, emailValue, passwordValue) {
     signinButton.classList.add('hidden');
     signinLoader.classList.remove('opacity-0');
     await signInWithEmailAndPassword(auth, email, password);
+    localStorage.setItem('isAuthenticated', 'true');
   } catch (error) {
     alert('Ошибка входа');
   } finally {
@@ -38,6 +39,7 @@ async function signGoogleIn() {
     signinGoogleLoader.classList.remove('opacity-0');
     const result = await signInWithPopup(auth, provider);
     await GoogleAuthProvider.credentialFromResult(result);
+    localStorage.setItem('isAuthenticated', 'true');
 
   } catch (error) {
     console.error('Error signing in with Google:', error);
