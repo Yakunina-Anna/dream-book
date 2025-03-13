@@ -24,10 +24,10 @@ async function signIn(event, emailValue, passwordValue) {
   } catch (error) {
     alert('Ошибка входа');
   } finally {
-    signinButton.classList.remove('hidden');
-    signinLoader.classList.add('opacity-0');
     signinEmailInput.value = '';
     signinPasswordInput.value = '';
+    signinButton.classList.remove('hidden');
+    signinLoader.classList.add('opacity-0');
   }
 }
 

@@ -22,3 +22,5 @@ function logout() {
   localStorage.removeItem('isRemembered');
   window.location.href = 'index.html';
 }
+
+export { logout };

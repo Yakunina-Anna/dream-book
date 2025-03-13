@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Auth Page</title>
   <style>
-    /* Стили для скрытия форм */
-    .hidden {
-      display: none;
-    }
   </style>
   <link rel="stylesheet" href="assets/styles/style.css">
 </head>
@@ -56,7 +52,10 @@
             <input id="signup-password" type="password" name="password" placeholder="password" required>
           </div>
           <div class="auth__input">
-            <button type="submit" class="button">Зарегистрироваться</button>
+            <button type="submit" class="button">
+              <span id="signup-button-text">Зарегистрироваться</span>
+              <span id="signup-loader" class="loader loader-white opacity-0"></span>
+            </button>
             <div class="auth__info">
               <div>
                 <span>Есть аккаунт?</span>
