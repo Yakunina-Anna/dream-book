@@ -10,12 +10,6 @@ if (logoutButton) {
     try {
       // Выполняем выход из Firebase Authentication
       await signOut(auth);
-      console.log('User signed out successfully');
-
-      // Очищаем данные из localStorage
-      localStorage.removeItem('isAuthenticated');
-      localStorage.removeItem('savedEmail');
-      localStorage.removeItem('isRemembered');
 
       window.location.href = 'auth.html';
     } catch (error) {

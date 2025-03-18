@@ -17,9 +17,6 @@ onAuthStateChanged(auth, (user) => {
       window.location.href = 'auth.html';
     }
 
-    // Удаляем флаг из localStorage
-    localStorage.removeItem('isAuthenticated');
-
     // Перенаправляем на страницу входа, если пользователь находится на главной странице
     if (!window.location.pathname.endsWith('auth.html')) {
       window.location.href = 'auth.html';

@@ -16,11 +16,3 @@ showSignupButton.addEventListener('click', () => {
   signupForm.classList.remove('hidden');
   signinForm.classList.add('hidden');
 });
-
-function logout() {
-  localStorage.removeItem('isAuthenticated');
-  localStorage.removeItem('isRemembered');
-  window.location.href = 'index.html';
-}
-
-export { logout };

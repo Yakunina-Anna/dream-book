@@ -25,7 +25,7 @@
             <input id="signin-password" type="password" name="password" placeholder="password" required>
           </div>
           <div class="auth__input">
-            <button type="submit" class="button">
+            <button id="signin-button" type="submit" class="button">
               <span id="signin-button-text">Войти</span>
               <span id="signin-loader" class="loader loader-white opacity-0"></span>
             </button>
@@ -52,7 +52,7 @@
             <input id="signup-password" type="password" name="password" placeholder="password" required>
           </div>
           <div class="auth__input">
-            <button type="submit" class="button">
+            <button id="signup-button" type="submit" class="button">
               <span id="signup-button-text">Зарегистрироваться</span>
               <span id="signup-loader" class="loader loader-white opacity-0"></span>
             </button>
@@ -62,8 +62,9 @@
             <a href="#" id="show-signin" class="info-link auth__info-link">Войти</a>
           </div>
         </form>
-        <div>
+        <div id="error-message" class="error__inner hidden">
         </div>
+
       </div>
     </div>
   </div>
